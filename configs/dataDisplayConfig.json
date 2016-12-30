@@ -21,7 +21,7 @@
     "inMaxSpeed": {
       "type": "ledDisplays",
       "index": 0,
-      "enabled": true
+      "enabled": false
     },
     "inMinSpeed": {
       "type": "ledDisplays",
@@ -37,6 +37,11 @@
       "type": "ledDisplays",
       "index": 3,
       "enabled": false
+    },
+    "inOutMaxSpeed": {
+      "type": "ledDisplays",
+      "index": 0,
+      "enabled": true
     },
     "speedHistory": {
       "type": "lcdDisplays",

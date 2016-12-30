@@ -13,52 +13,7 @@ var dataDisplay = function (options) {
     var self = this;
     
     var defaultOptions = {
-        "ledDisplays":
-            [
-              {
-                  "name": "Led 0",
-                  "I2CAddress": "0x70",
-                  "I2CDevice": "/dev/i2c-2",
-                  "enabled": false
-              }
-            ]
-          ,
-        "lcdDisplays": [
-          {
-              "name": "Led 0",
-              "I2CAddress": "0x37",
-              "I2CDevice": "/dev/i2c-2",
-              "enabled": false
-          }
-        ],
-        "displayLocation": {
-            "inMaxSpeed": {
-                "type": "ledDisplays",
-                "index": 0,
-                "enabled": false
-            },
-            "inMinSpeed": {
-                "type": "ledDisplays",
-                "index": 0,
-                "enabled": false
-            },
-            "outMaxSpeed": {
-                "type": "ledDisplays",
-                "index": 0,
-                "enabled": false
-            },
-            "outMinSpeed": {
-                "type": "ledDisplays",
-                "index": 0,
-                "enabled": false
-            },
-            "speedHistory": {
-                "type": "lcdDisplays",
-                "index": 0,
-                "enabled": false
-            }
-
-        }
+        //loaded from Config
     }
 
 
@@ -83,7 +38,7 @@ var dataDisplay = function (options) {
                     debug('inMaxSpeed enabled ', objOptions.displayLocation.inMaxSpeed);
                     switch (objOptions.displayLocation.inMaxSpeed.type) {
                         case "ledDisplays":
-                            var ledDisplays = commonData[objOptions.displayLocation.outMaxSpeed.type];
+                            var ledDisplays = commonData[objOptions.displayLocation.inMaxSpeed.type];
                             if (ledDisplays && ledDisplays[objOptions.displayLocation.inMaxSpeed.index]) {
                                 debug('inMaxSpeed ledDisplays ');
                                 var myLed =  ledDisplays[objOptions.displayLocation.inMaxSpeed.index];
@@ -116,6 +71,30 @@ var dataDisplay = function (options) {
                                     }, speedData);
                                 } else {
                                     debug("ledDisplay not yet ready ");
+                                }
+                            }
+                            break;
+                    }
+
+                }
+
+
+                if (objOptions.displayLocation.inOutMaxSpeed && objOptions.displayLocation.inOutMaxSpeed.enabled == true) {
+                    debug('inOutMaxSpeed enabled ', objOptions.displayLocation.inOutMaxSpeed);
+                    switch (objOptions.displayLocation.inOutMaxSpeed.type) {
+                        case "ledDisplays":
+                            var ledDisplays = commonData[objOptions.displayLocation.inOutMaxSpeed.type];
+                            if (ledDisplays && ledDisplays[objOptions.displayLocation.inOutMaxSpeed.index]) {
+                                debug('inMaxSpeed ledDisplays ');
+                                var myLed = ledDisplays[objOptions.displayLocation.inOutMaxSpeed.index];
+                                if (myLed.ledDisplay.enabled == true) {
+                                    var myAdafruitLedbackPack = myLed.led;
+                                    var myInOutMax = speedData.inMaxSpeed.toString() + speedData.outMaxSpeed.toString();
+                                    myAdafruitLedbackPack.writeNumber(myInOutMax, true, function (err, myInOutMax) {
+                                        debug('inMaxSpeed ledDisplay ' + objOptions.displayLocation.inOutMaxSpeed.index + ' writeNumber ' + myInOutMax, err);
+                                    }, myInOutMax);
+                                } else {
+                                    debug("ledDisplay not yet ready");
                                 }
                             }
                             break;
