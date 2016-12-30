@@ -37,7 +37,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "extend": "^3.0.0",
-    "i2c": "^0.2.2",
+    "i2c": "^0.2.1",
     "mathjs": "^2.4.0",
     "nconf": "^0.8.4",
     "socket.io-client": "^1.7.2",
