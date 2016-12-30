@@ -22,6 +22,7 @@ try {
         console.log('Socket Connected');
     });
     socket.on('radarSpeed', function (data) {
+        dataDisplay.updateSpeedData(data);
         console.log('Socket radarSpeed Event', data);
     });
     socket.on('batteryVoltage', function (data) {
