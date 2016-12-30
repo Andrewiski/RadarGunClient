@@ -1,0 +1,49 @@
+﻿{
+  "ledDisplays": 
+    [
+      {
+        "name": "Led 0",
+        "I2CAddress": "0x77",
+        "I2CDevice": "/dev/i2c-2",
+        "enabled": true
+      }
+    ]
+  ,
+  "lcdDisplays": [
+    {
+      "name": "Led 0",
+      "I2CAddress": "0x37",
+      "I2CDevice": "/dev/i2c-2",
+      "enabled": true
+    }
+  ],
+  "displayLocation": {
+    "inMaxSpeed": {
+      "type": "ledDisplays",
+      "index": 0,
+      "enabled": true
+    },
+    "inMinSpeed": {
+      "type": "ledDisplays",
+      "index": 2,
+      "enabled": false
+    },
+    "outMaxSpeed": {
+      "type": "ledDisplays",
+      "index": 1,
+      "enabled": false
+    },
+    "outMinSpeed": {
+      "type": "ledDisplays",
+      "index": 3,
+      "enabled": false
+    },
+    "speedHistory": {
+      "type": "lcdDisplays",
+      "index": 0,
+      "enabled": false
+    }
+    
+  }
+
+}
