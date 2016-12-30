@@ -89,7 +89,21 @@ var dataDisplay = function (options) {
                                 var myLed = ledDisplays[objOptions.displayLocation.inOutMaxSpeed.index];
                                 if (myLed.ledDisplay.enabled == true) {
                                     var myAdafruitLedbackPack = myLed.led;
-                                    var myInOutMax = speedData.inMaxSpeed.toString() + speedData.outMaxSpeed.toString();
+                                    var myInMax = speedData.inMaxSpeed.toString();
+                                    if (myInMax.length == 1) {
+                                        myInMax = "0" + myInMax;
+                                    }
+                                    if (myInMax.length == 0) {
+                                        myInMax = "00";
+                                    }
+                                    var myOutMax = speedData.inMaxSpeed.toString();
+                                    if (myOutMax.length == 1) {
+                                        myOutMax = "0" + myOutMax;
+                                    }
+                                    if (myOutMax.length == 0) {
+                                        myOutMax = "00";
+                                    }
+                                    var myInOutMax = myInMax + myOutMax;
                                     myAdafruitLedbackPack.writeNumber(myInOutMax, true, function (err, myInOutMax) {
                                         debug('inMaxSpeed ledDisplay ' + objOptions.displayLocation.inOutMaxSpeed.index + ' writeNumber ' + myInOutMax, err);
                                     }, myInOutMax);
