@@ -89,14 +89,14 @@ var dataDisplay = function (options) {
                                 var myLed = ledDisplays[objOptions.displayLocation.inOutMaxSpeed.index];
                                 if (myLed.ledDisplay.enabled == true) {
                                     var myAdafruitLedbackPack = myLed.led;
-                                    var myInMax = speedData.inMaxSpeed.toString();
+                                    var myInMax = Math.round(speedData.inMaxSpeed).toString();
                                     if (myInMax.length == 1) {
                                         myInMax = "0" + myInMax;
                                     }
                                     if (myInMax.length == 0) {
                                         myInMax = "00";
                                     }
-                                    var myOutMax = speedData.inMaxSpeed.toString();
+                                    var myOutMax = Math.round(speedData.outMaxSpeed).toString();
                                     if (myOutMax.length == 1) {
                                         myOutMax = "0" + myOutMax;
                                     }
