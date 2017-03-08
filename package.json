@@ -28,7 +28,7 @@
   "description": "Digital Example BeagleBone based Radar Gun Client",
   "main": "app.js",
   "engines": {
-    "node": ">= 0.12.13"
+    "node": ">= 4.0.0"
   },
   "author": {
     "name": "adevries",
@@ -37,7 +37,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "extend": "^3.0.0",
-    "i2c": "0.2.1",
+    "i2c": "0.2.3",
     "mathjs": "^2.4.0",
     "nconf": "^0.8.4",
     "socket.io-client": "^1.7.2",
